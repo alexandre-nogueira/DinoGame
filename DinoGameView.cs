@@ -1,15 +1,15 @@
 using System;
 
-public class JogoDinossauroView{
+public class DinoGameView{
 
     const int alturaHeader = 3;
 
     //Campos da tela
     public string nomeJogador1;
 
-    public void telaInicial(){
-        escreverMenu();
-        escreverDinoAscii();
+    public void InicialScreen(){
+        WriteMainMenu();
+        WriteDinoAscii();
         Console.BackgroundColor =ConsoleColor.White;
         Console.ForegroundColor =ConsoleColor.Black;
         Console.WriteLine("Vamos iniciar o jogo, pressione enter!");
@@ -17,7 +17,7 @@ public class JogoDinossauroView{
         Console.ReadKey();
     }
 
-    public void escreverMenu(){
+    public void WriteMainMenu(){
         Console.Clear();
         Console.WriteLine(("").PadRight(80, '='));
         Console.WriteLine("--------------------         BATALHA DE DINOSSAUROS         --------------------");
@@ -25,7 +25,7 @@ public class JogoDinossauroView{
         Console.WriteLine();
     }
 
-    public void escreverDinoAscii(){
+    public void WriteDinoAscii(){
         for (int i=0; i<=25 ; i++)
         {
             Console.SetCursorPosition(i+1, alturaHeader);
@@ -46,31 +46,31 @@ public class JogoDinossauroView{
     }
 
     
-    public void escreveLinhaPontos(int pPontosAtaque, int pPontosDefesa){
+    public void WritePointsLine(int pAttackPoints, int pDefensePoints){
         int cursorTop = Console.CursorTop;
         int cursorLeft = Console.CursorLeft;
         Console.SetCursorPosition(0, Console.CursorTop+2);
         Console.SetCursorPosition(0, Console.CursorTop);
-        for(int i = 0; i < pPontosAtaque; i++){
+        for(int i = 0; i < pAttackPoints; i++){
             Console.Write('+');
         }
-        Console.Write(("").PadRight(pPontosDefesa, '-'));
+        Console.Write(("").PadRight(pDefensePoints, '-'));
         Console.WriteLine();
         Console.WriteLine();
         ClearCurrentConsoleLine();
-        Console.WriteLine("Pontos de Ataque...: " + pPontosAtaque);
+        Console.WriteLine("Pontos de Ataque...: " + pAttackPoints);
         ClearCurrentConsoleLine();
-        Console.WriteLine("Pontos de Defesa...: " + pPontosDefesa);
+        Console.WriteLine("Pontos de Defesa...: " + pDefensePoints);
 
         Console.SetCursorPosition(cursorLeft, cursorTop);
 
 
     }
 
-    public string getNomeJogador(string numeroJogador){
+    public string GetPlayerName(string playerNumber){
         //Nome
-        escreverMenu();
-        Console.Write("Nome do Jogador " + numeroJogador + " : ");
+        WriteMainMenu();
+        Console.Write("Nome do Jogador " + playerNumber + " : ");
         return Console.ReadLine();
     }
 
@@ -83,10 +83,10 @@ public class JogoDinossauroView{
     }
 
 
-    public int readInt(string label, int valorMaximo){
+    public int readInt(string label, int maxInputValue){
         ConsoleKeyInfo cki;
         var sb = new System.Text.StringBuilder();
-        int valor = 0;
+        int inputValue = 0;
 
         Console.Write(label);
         while(true){
@@ -96,8 +96,8 @@ public class JogoDinossauroView{
             if (char.IsDigit(cki.KeyChar))
             {
                 sb.Append(cki.KeyChar);
-                valor = int.Parse(sb.ToString());
-                if (valor <= valorMaximo){
+                inputValue = int.Parse(sb.ToString());
+                if (inputValue <= maxInputValue){
                     Console.Write(cki.KeyChar);
                 } else
                     sb.Remove(sb.Length-1, 1);
@@ -111,8 +111,8 @@ public class JogoDinossauroView{
                 }
             
             }else if(cki.Key == ConsoleKey.Enter){
-                if(int.TryParse(sb.ToString(), out valor))
-                    return valor;
+                if(int.TryParse(sb.ToString(), out inputValue))
+                    return inputValue;
             }else continue;
 
         }

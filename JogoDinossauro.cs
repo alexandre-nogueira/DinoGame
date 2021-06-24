@@ -2,184 +2,184 @@ using System;
 using System.Collections.Generic;
 
 
-class JogoDinossauro
+class GameController
 {
 
     //Constantes
-    const int numeroMaxDinos = 5;
-    const int numeroMaxDado = 20;
-    const int pontosMaximosPossiveis = 80;
+    const int MAXDINOSPERPLAYER = 5;
+    const int MAXDICENUMBER = 20;
+    const int MAXPOSSIBLEPOINTS = 80;
 
-    public Jogador jogador1;
-    public Jogador jogador2;
+    public Player player1;
+    public Player player2;
 
-    private Jogador vencedor;
-    private int dinosPorJogador;
+    private Player winner;
+    private int dinosPerPlayer;
 
-    private List<Turno> turnos = new List<Turno>();
-    private Turno turnoAtual;
+    private List<Turn> turns = new List<Turn>();
+    private Turn currentTurn;
 
-    private double tipoDado;
+    private double diceType;
 
-    private int pontosMaxPersonagem;
+    private int maxPoints;
 
-    JogoDinossauroView jogoView = new JogoDinossauroView();
+    DinoGameView dinoGameView = new DinoGameView();
 
-    public void inicializarJogo(){
-        jogoView.telaInicial();
-        inicializarJogadores();
-        inicializarQtdDinos();
-        inicializarTipoDado();
-        inicializarQtdMaxPontosPersonagem();
+    public void InitGame(){
+        dinoGameView.InicialScreen();
+        InitPlayers();
+        InitDinosPerPlayer();
+        InitDiceType();
+        IntMaxPoints();
     }
 
-    public int getDinosPorJogador(){
-        return dinosPorJogador;
+    public int getDinosPorPlayer(){
+        return dinosPerPlayer;
     }
 
-    public void inicializarJogadores(){
+    public void InitPlayers(){
         
-        jogador1 = new Jogador(jogoView.getNomeJogador("1"));
-        jogador2 = new Jogador(jogoView.getNomeJogador("2"));
-        // jogador1 = criarJogador("1");
-        // jogador2 = criarJogador("2");
+        player1 = new Player(dinoGameView.GetPlayerName("1"));
+        player2 = new Player(dinoGameView.GetPlayerName("2"));
+        // player1 = criarPlayer("1");
+        // player2 = criarPlayer("2");
     }
 
-    public void inicializarQtdDinos(){
+    public void InitDinosPerPlayer(){
                 
-        jogoView.escreverMenu();
-        dinosPorJogador = jogoView.readInt("Dinos por Jogador: ", numeroMaxDinos);
+        dinoGameView.WriteMainMenu();
+        dinosPerPlayer = dinoGameView.readInt("Dinos por Player: ", MAXDINOSPERPLAYER);
     }
 
-    public void inicializarTipoDado(){
+    public void InitDiceType(){
                 
-        jogoView.escreverMenu();
-        tipoDado = jogoView.readInt("Qual o número máximo do seu dado? ", numeroMaxDado);
-        //tipoDado = Utilitario.readDouble("Qual o número máximo do seu dado? ");
+        dinoGameView.WriteMainMenu();
+        diceType = dinoGameView.readInt("Qual o número máximo do seu dado? ", MAXDICENUMBER);
+        //diceType = Utilitario.readDouble("Qual o número máximo do seu dado? ");
     }
 
-    public void inicializarQtdMaxPontosPersonagem(){
+    public void IntMaxPoints(){
                 
-        jogoView.escreverMenu();
-        pontosMaxPersonagem = jogoView.readInt("Pontos máximos por dino: ", pontosMaximosPossiveis);
-        //pontosMaxPersonagem = Utilitario.readInt("Pontos máximos por dino: ");
+        dinoGameView.WriteMainMenu();
+        maxPoints = dinoGameView.readInt("Pontos máximos por dino: ", MAXPOSSIBLEPOINTS);
+        //maxPoints = Utilitario.readInt("Pontos máximos por dino: ");
     }
 
-    public void exibirTelaTudoPronto(){
-        jogoView.escreverMenu();
+    public void ShowAllsetScreen(){
+        dinoGameView.WriteMainMenu();
         Console.WriteLine("-----------------------------");
         Console.WriteLine("Tudo pronto, vamos comerçar!!");
         Console.WriteLine("-----------------------------");
 
-        jogador1.listarDinos();
-        jogador2.listarDinos();
+        player1.ListDinos();
+        player2.ListDinos();
         Console.ReadKey();
     }
 
-    private void escreverTurno(int numeroTurno){
+    private void WriteTurn(int numeroTurn){
         Console.BackgroundColor =ConsoleColor.White;
         Console.ForegroundColor =ConsoleColor.Black;
-        Console.WriteLine("Turno: " + numeroTurno + " ");
+        Console.WriteLine("Turn: " + numeroTurn + " ");
         Console.WriteLine();
         Console.ResetColor();
     }
-    // public Jogador criarJogador(int numeroJogador){
-    //     return new Jogador(jogoView.getNomeJogador(numeroJogador));
+    // public Player criarPlayer(int numeroPlayer){
+    //     return new Player(dinoGameView.GetPlayerName(numeroPlayer));
     // }
 
-    public void criarDinosDoJogador(Jogador jogador){
-        for(int i=0; i < dinosPorJogador; i++){
-            jogoView.escreverMenu();
-            int numeroDino = i +1;
-            Console.WriteLine("Jogador " + jogador.getNome() + " - Dino " + numeroDino);
+    public void CreateDinos(Player player){
+        for(int i=0; i < dinosPerPlayer; i++){
+            dinoGameView.WriteMainMenu();
+            int dinoNumber = i +1;
+            Console.WriteLine("Player " + player.GetName() + " - Dino " + dinoNumber);
             Console.WriteLine("-----------------------------");
-            jogador.adicionarDinossauro(criarDinossauro());
+            player.AddDinossaur(CreateDinossaur());
         }
     }
 
-    public Dinossauro criarDinossauro(){
-        string nome;
-        int pontosdeataque;
-        int pontosdedefesa;
+    public Dinossaur CreateDinossaur(){
+        string name;
+        int attackPoints;
+        int defensePoints;
 
         //Nome
         Console.Write("Nome do Dino: ");
-        nome = Console.ReadLine();
+        name = Console.ReadLine();
 
-       pontosdeataque = EntrarPontosAtaque();
-       pontosdedefesa = pontosMaxPersonagem - pontosdeataque;
+       attackPoints = EnterAttackPoints();
+       defensePoints = maxPoints - attackPoints;
 
-       return new Dinossauro(nome, pontosdeataque, pontosdedefesa);
+       return new Dinossaur(name, attackPoints, defensePoints);
     }
 
-    public int rolarDados(){
+    public int RollDice(){
         //Random r = new Random();
-        //return r.Next(1, tipoDado);
+        //return r.Next(1, diceType);
         while(true){
-            int valorDadoLido = Utilitario.readInt("Valor do dado: ");
-            if ( valorDadoLido <= tipoDado) 
-                return valorDadoLido;
+            int diceValue = ScreenUtility.readInt("value do dado: ");
+            if ( diceValue <= diceType) 
+                return diceValue;
         }
     }
 
-    public void iniciarTurno(){
+    public void InitTurn(){
 
-        Dinossauro dinoAtaque;
-        Dinossauro dinoDefesa;
-        Jogador jogadorAtaque;
-        Jogador jogadorDefesa;
+        Dinossaur attackDino;
+        Dinossaur defenseDino;
+        Player attackPlayer;
+        Player defensePlayer;
 
-        if(turnoAtual == null){
-            jogadorAtaque = jogador1;
-            jogadorDefesa = jogador2;
-        }else if(turnoAtual.getJogadorAtacante() == jogador1.getNome()){
-            jogadorAtaque = jogador2;
-            jogadorDefesa = jogador1;
+        if(currentTurn == null){
+            attackPlayer = player1;
+            defensePlayer = player2;
+        }else if(currentTurn.GetAttackPlayer() == player1.GetName()){
+            attackPlayer = player2;
+            defensePlayer = player1;
         }else{
-            jogadorAtaque = jogador1;
-            jogadorDefesa = jogador2;
+            attackPlayer = player1;
+            defensePlayer = player2;
         }
-        jogoView.escreverMenu();
-        escreverTurno(turnoAtual == null ? 1 : turnoAtual.getNumeroTurno()+1);
+        dinoGameView.WriteMainMenu();
+        WriteTurn(currentTurn == null ? 1 : currentTurn.GetNumber()+1);
 
-        Console.WriteLine(jogadorAtaque.getNome() + ", sua vez!!");
+        Console.WriteLine(attackPlayer.GetName() + ", sua vez!!");
         Console.WriteLine();
-        dinoAtaque = jogadorAtaque.selecionarDino("Atacar");
-        jogoView.escreverMenu();
-        escreverTurno(turnoAtual == null ? 1 : turnoAtual.getNumeroTurno()+1);
-        Console.WriteLine(jogadorDefesa.getNome() + ", sua vez!!");
+        attackDino = attackPlayer.SelectDino("Atacar");
+        dinoGameView.WriteMainMenu();
+        WriteTurn(currentTurn == null ? 1 : currentTurn.GetNumber()+1);
+        Console.WriteLine(defensePlayer.GetName() + ", sua vez!!");
         Console.WriteLine();
-        dinoDefesa = jogadorDefesa.selecionarDino("Defender");
-        turnoAtual = new Turno((turnoAtual == null ? 1 : turnoAtual.getNumeroTurno()+1), jogadorAtaque.getNome(), jogadorDefesa.getNome(), dinoAtaque, dinoDefesa);
+        defenseDino = defensePlayer.SelectDino("Defend");
+        currentTurn = new Turn((currentTurn == null ? 1 : currentTurn.GetNumber()+1), attackPlayer.GetName(), defensePlayer.GetName(), attackDino, defenseDino);
     }
 
 
-    public void executarJogada(){
-        int valorDado;
-        double valorDoAtaque;
+    public void ExecutePlay(){
+        int diceValue;
+        double attackValue;
         int penalidadeAtaque;
         
-        //Jogador atacante rola o dado
-        valorDado = rolarDados();
-        turnoAtual.dadoAtaque = valorDado;
+        //Player atacante rola o dado
+        diceValue = RollDice();
+        currentTurn.hitPointsAttack = diceValue;
 
         //O calculo do ataque é executado
-        valorDoAtaque = (turnoAtual.getDinoAtacante().getPontosDeAtaque() / tipoDado) * valorDado;
-        Console.WriteLine("valor do dado:: " + valorDado + " Parametro ataque: " + turnoAtual.getDinoAtacante().getPontosDeAtaque() + " valor ataque: " + valorDoAtaque);
+        attackValue = (currentTurn.GetAttackDino().GetAttackPoints() / diceType) * diceValue;
+        Console.WriteLine("value do dado:: " + diceValue + " Parametro ataque: " + currentTurn.GetAttackDino().GetAttackPoints() + " value ataque: " + attackValue);
         Console.ReadKey();
 
-        //O dano é inflingido no dinossauro de defesa e ataque
-        turnoAtual.getDinoDefensor().defender((int)valorDoAtaque);
-        penalidadeAtaque = turnoAtual.getDinoAtacante().atacar();
+        //O dano é inflingido no Dinossaur de defesa e ataque
+        currentTurn.GetDefenseDino().Defend((int)attackValue);
+        penalidadeAtaque = currentTurn.GetAttackDino().Attack();
 
-        turnoAtual.registrarAtaque();
+        currentTurn.RegisterAttack();
 
-        //Exibir os dados do Turno
-        jogoView.escreverMenu();
-        escreverTurno(turnoAtual.getNumeroTurno());
-        Console.WriteLine("O jogador " + turnoAtual.getJogadorAtacante() + " atacou o dino " + turnoAtual.getDinoDefensor().getNome() + 
-                " com o dino " + turnoAtual.getDinoAtacante().getNome() + " e tirou " + valorDoAtaque + " pontos de vida");
-        Console.WriteLine("Agora o dino " + turnoAtual.getDinoDefensor().getNome() + " tem apenas " + turnoAtual.getDinoDefensor().getPontosDeDefesa());
+        //Exibir os dados do Turn
+        dinoGameView.WriteMainMenu();
+        WriteTurn(currentTurn.GetNumber());
+        Console.WriteLine("O Player " + currentTurn.GetAttackPlayer() + " atacou o dino " + currentTurn.GetDefenseDino().GetName() + 
+                " com o dino " + currentTurn.GetAttackDino().GetName() + " e tirou " + attackValue + " pontos de vida");
+        Console.WriteLine("Agora o dino " + currentTurn.GetDefenseDino().GetName() + " tem apenas " + currentTurn.GetDefenseDino().GetDefensePoints());
 
         Console.WriteLine("Penalidade de ataque: " + (penalidadeAtaque ==1 ? "ataque" : "defesa"));
 
@@ -187,45 +187,45 @@ class JogoDinossauro
 
     }
 
-    public void finalizarTurno(){
-        turnos.Add(turnoAtual);
+    public void FinishTurn(){
+        turns.Add(currentTurn);
     }
 
 
-    public bool alguemGanhou(){
-        if(!jogador1.temDinosVivos()){
-            vencedor = jogador2;
+    public bool HasWinner(){
+        if(!player1.HasDinosAlive()){
+            winner = player2;
             return true;
         }
-        if(!jogador2.temDinosVivos()){
-            vencedor = jogador1;
+        if(!player2.HasDinosAlive()){
+            winner = player1;
             return true;
         }
         return false;
 
     }
-    public void finalizarJogo(){
-        jogoView.escreverMenu();
-        Console.WriteLine("O vencedor é:....... " + vencedor.getNome());
-        foreach (Turno turno in turnos)
+    public void FinishGame(){
+        dinoGameView.WriteMainMenu();
+        Console.WriteLine("O winner é:....... " + winner.GetName());
+        foreach (Turn Turn in turns)
         {
-            escreverTurno(turno.getNumeroTurno());
-            Console.WriteLine("Dino Ataque " + turno.getDinoAtacante().getNome() +
-            " Pontos Iniciais: " + turno.getDinoAtacantePontosIniciais() + 
-            " Pontos finais: " + turno.getDinoAtacantePontosFinais());
-            Console.WriteLine("Dino Defesa " + turno.getDinoDefensor().getNome() +
-            " Pontos Iniciais: " + turno.getDinoDefensorPontosIniciais() + 
-            " Pontos finais: " + turno.getDinoDefensorPontosFinais());
+            WriteTurn(Turn.GetNumber());
+            Console.WriteLine("Dino Ataque " + Turn.GetAttackDino().GetName() +
+            " Pontos Iniciais: " + Turn.GetattackDinoInicialPoints() + 
+            " Pontos finais: " + Turn.GetAttackDinoFinalPoints());
+            Console.WriteLine("Dino Defesa " + Turn.GetDefenseDino().GetName() +
+            " Pontos Iniciais: " + Turn.GetDefenseDinoInicialPoints() + 
+            " Pontos finais: " + Turn.GetDefenseDinoFinalPoints());
             Console.WriteLine();
         }
 
 
     }
 
-     public int EntrarPontosAtaque(){
+     public int EnterAttackPoints(){
         ConsoleKeyInfo cki;
         var sb = new System.Text.StringBuilder();
-        int valor = 0;
+        int value = 0;
 
         Console.Write("Pontos de Ataque: ");
         while(true){
@@ -235,10 +235,10 @@ class JogoDinossauro
             if (char.IsDigit(cki.KeyChar))
             {
                 sb.Append(cki.KeyChar);
-                valor = int.Parse(sb.ToString());
-                if (valor < pontosMaxPersonagem){
+                value = int.Parse(sb.ToString());
+                if (value < maxPoints){
                     Console.Write(cki.KeyChar);
-                    jogoView.escreveLinhaPontos(valor, pontosMaxPersonagem-valor);
+                    dinoGameView.WritePointsLine(value, maxPoints-value);
                 } else
                     sb.Remove(sb.Length-1, 1);
             }
@@ -248,16 +248,16 @@ class JogoDinossauro
                     Console.SetCursorPosition(Console.CursorLeft-1, Console.CursorTop);
                     Console.Write(' ');
                     Console.SetCursorPosition(Console.CursorLeft-1, Console.CursorTop);
-                    if(int.TryParse(sb.ToString(), out valor)){
-                        jogoView.escreveLinhaPontos(valor, pontosMaxPersonagem-valor);
+                    if(int.TryParse(sb.ToString(), out value)){
+                        dinoGameView.WritePointsLine(value, maxPoints-value);
                     }else{
-                        jogoView.escreveLinhaPontos(0, pontosMaxPersonagem-valor);
+                        dinoGameView.WritePointsLine(0, maxPoints-value);
                     }
                 }
             
             }else if(cki.Key == ConsoleKey.Enter){
-                if(int.TryParse(sb.ToString(), out valor))
-                    return valor;
+                if(int.TryParse(sb.ToString(), out value))
+                    return value;
             }else continue;
 
         }

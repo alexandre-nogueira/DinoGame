@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic; 
-public static class Utilitario{
+public static class ScreenUtility{
 
     public static int readInt(string label){
         int valor = 0;
