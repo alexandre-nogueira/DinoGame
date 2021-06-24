@@ -1,0 +1,13 @@
+D:\OneDrive\1. Pessoal\Estudos\Programacao\C e CPP\Jogo Dinossauros\bin\Debug\netcoreapp3.1\Jogo Dinossauros.exe
+D:\OneDrive\1. Pessoal\Estudos\Programacao\C e CPP\Jogo Dinossauros\bin\Debug\netcoreapp3.1\Jogo Dinossauros.deps.json
+D:\OneDrive\1. Pessoal\Estudos\Programacao\C e CPP\Jogo Dinossauros\bin\Debug\netcoreapp3.1\Jogo Dinossauros.runtimeconfig.json
+D:\OneDrive\1. Pessoal\Estudos\Programacao\C e CPP\Jogo Dinossauros\bin\Debug\netcoreapp3.1\Jogo Dinossauros.runtimeconfig.dev.json
+D:\OneDrive\1. Pessoal\Estudos\Programacao\C e CPP\Jogo Dinossauros\bin\Debug\netcoreapp3.1\Jogo Dinossauros.dll
+D:\OneDrive\1. Pessoal\Estudos\Programacao\C e CPP\Jogo Dinossauros\bin\Debug\netcoreapp3.1\Jogo Dinossauros.pdb
+D:\OneDrive\1. Pessoal\Estudos\Programacao\C e CPP\Jogo Dinossauros\obj\Debug\netcoreapp3.1\Jogo Dinossauros.csprojAssemblyReference.cache
+D:\OneDrive\1. Pessoal\Estudos\Programacao\C e CPP\Jogo Dinossauros\obj\Debug\netcoreapp3.1\Jogo Dinossauros.AssemblyInfoInputs.cache
+D:\OneDrive\1. Pessoal\Estudos\Programacao\C e CPP\Jogo Dinossauros\obj\Debug\netcoreapp3.1\Jogo Dinossauros.AssemblyInfo.cs
+D:\OneDrive\1. Pessoal\Estudos\Programacao\C e CPP\Jogo Dinossauros\obj\Debug\netcoreapp3.1\Jogo Dinossauros.csproj.CoreCompileInputs.cache
+D:\OneDrive\1. Pessoal\Estudos\Programacao\C e CPP\Jogo Dinossauros\obj\Debug\netcoreapp3.1\Jogo Dinossauros.dll
+D:\OneDrive\1. Pessoal\Estudos\Programacao\C e CPP\Jogo Dinossauros\obj\Debug\netcoreapp3.1\Jogo Dinossauros.pdb
+D:\OneDrive\1. Pessoal\Estudos\Programacao\C e CPP\Jogo Dinossauros\obj\Debug\netcoreapp3.1\Jogo Dinossauros.genruntimeconfig.cache
