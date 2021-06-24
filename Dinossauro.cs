@@ -14,8 +14,9 @@ public class Dinossauro
         pontosdeataque = pa;
         pontosdedefesa = pd;
         vivo = true;
-        
+
     }
+
 
     public int atacar(){
         if (new Random().Next(1,100) <= 50){
