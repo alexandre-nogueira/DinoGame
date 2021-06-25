@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+
+namespace DinoGame.Models{
 public class Player{
 
     private string name;
@@ -56,4 +58,5 @@ public class Player{
         return false;
     }
 
+}
 }

@@ -1,11 +1,10 @@
 using System;
-
+namespace DinoGame.Views{
 public class DinoGameView{
 
-    const int alturaHeader = 3;
+    const int HEADERHEIGHT = 3;
 
     //Campos da tela
-    public string nomeJogador1;
 
     public void InicialScreen(){
         WriteMainMenu();
@@ -28,17 +27,17 @@ public class DinoGameView{
     public void WriteDinoAscii(){
         for (int i=0; i<=25 ; i++)
         {
-            Console.SetCursorPosition(i+1, alturaHeader);
+            Console.SetCursorPosition(i+1, HEADERHEIGHT);
             Console.WriteLine("                __ ");
-            Console.SetCursorPosition(i+1, alturaHeader+1);
+            Console.SetCursorPosition(i+1, HEADERHEIGHT+1);
             Console.WriteLine("               / _)");
-            Console.SetCursorPosition(i+1, alturaHeader+2);
+            Console.SetCursorPosition(i+1, HEADERHEIGHT+2);
             Console.WriteLine("      _.----._/ /  ");
-            Console.SetCursorPosition(i+1, alturaHeader+3);
+            Console.SetCursorPosition(i+1, HEADERHEIGHT+3);
             Console.WriteLine("     /         /   ");
-            Console.SetCursorPosition(i+1, alturaHeader+4);
+            Console.SetCursorPosition(i+1, HEADERHEIGHT+4);
             Console.WriteLine("  __/ (  | (  |    ");
-            Console.SetCursorPosition(i+1, alturaHeader+5);
+            Console.SetCursorPosition(i+1, HEADERHEIGHT+5);
             Console.WriteLine(" /__.-'|_|--|_|    ");
             Console.WriteLine();
             System.Threading.Thread.Sleep(80);
@@ -63,7 +62,6 @@ public class DinoGameView{
         Console.WriteLine("Pontos de Defesa...: " + pDefensePoints);
 
         Console.SetCursorPosition(cursorLeft, cursorTop);
-
 
     }
 
@@ -118,4 +116,5 @@ public class DinoGameView{
         }
     }
 
+}
 }

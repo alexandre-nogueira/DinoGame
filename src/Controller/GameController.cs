@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using DinoGame.Models;
+using DinoGame.Views;
 
-
-class GameController
+namespace DinoGame.Controllers{
+public class GameController
 {
 
     //Constantes
@@ -41,8 +43,7 @@ class GameController
         
         player1 = new Player(dinoGameView.GetPlayerName("1"));
         player2 = new Player(dinoGameView.GetPlayerName("2"));
-        // player1 = criarPlayer("1");
-        // player2 = criarPlayer("2");
+
     }
 
     public void InitDinosPerPlayer(){
@@ -263,4 +264,5 @@ class GameController
         }
     }
 
+}
 }
