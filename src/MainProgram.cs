@@ -1,5 +1,7 @@
 using System;
+using DinoGame.Controllers;
 
+namespace DinoGame{
 public class MainProgram{
 
     GameController gameController = new GameController();
@@ -29,4 +31,5 @@ public class MainProgram{
 
     }
 
+}
 }

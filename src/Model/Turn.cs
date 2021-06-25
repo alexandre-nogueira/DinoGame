@@ -1,3 +1,5 @@
+
+namespace DinoGame.Models{
 public class Turn{
 
     private int number;
@@ -73,4 +75,5 @@ public class Turn{
     }
 
 
+}
 }

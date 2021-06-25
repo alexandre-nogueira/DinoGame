@@ -1,4 +1,6 @@
 using System;
+
+namespace DinoGame.Models{
 public class Dinossaur
 {
     private string name;
@@ -55,4 +57,5 @@ public class Dinossaur
         isAlive = false;
     }
 
+}
 }
