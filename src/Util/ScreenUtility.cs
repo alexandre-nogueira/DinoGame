@@ -27,5 +27,41 @@ namespace DinoGame.Util{
                 }
             return valor;
         }
+
+        
+    public static int ReadInt(string label, int maxInputValue){
+        ConsoleKeyInfo cki;
+        var sb = new System.Text.StringBuilder();
+        int inputValue = 0;
+
+        Console.Write(label);
+        while(true){
+            cki = Console.ReadKey(true);
+            
+            //Se foi digitado um número válido
+            if (char.IsDigit(cki.KeyChar))
+            {
+                sb.Append(cki.KeyChar);
+                inputValue = int.Parse(sb.ToString());
+                if (inputValue <= maxInputValue){
+                    Console.Write(cki.KeyChar);
+                } else
+                    sb.Remove(sb.Length-1, 1);
+            }
+            else if(cki.Key == ConsoleKey.Backspace){
+                if(sb.Length > 0){
+                    sb.Remove(sb.Length-1, 1);
+                    Console.SetCursorPosition(Console.CursorLeft-1, Console.CursorTop);
+                    Console.Write(' ');
+                    Console.SetCursorPosition(Console.CursorLeft-1, Console.CursorTop);
+                }
+            
+            }else if(cki.Key == ConsoleKey.Enter){
+                if(int.TryParse(sb.ToString(), out inputValue))
+                    return inputValue;
+            }else continue;
+
+        }
+    }
     }
 }

@@ -15,8 +15,10 @@ public class Turn{
     private int defenseDinoFinalPoints;
 
 
-    public int hitPointsAttack;
+    public int diceValue;
     public int hitPoints;
+    public int attackPenaltyType;
+    public int atackPenaltyValue;
 
     public int GetNumber(){
         return number;
@@ -68,10 +70,13 @@ public class Turn{
         return attackDino.GetAttackPoints();
     }
 
-    public void RegisterAttack(){
+    public void RegisterAttack(double pHitPoints, int penaltyType, int pentaltyValue){
 
         attackDinoFinalPoints = attackDino.GetAttackPoints();
         defenseDinoFinalPoints = defenseDino.GetDefensePoints();
+        hitPoints = (int)pHitPoints;
+        attackPenaltyType = penaltyType;
+        atackPenaltyValue = pentaltyValue;
     }
 
 

@@ -13,6 +13,8 @@ public class Player{
         name = playerName;
     }
 
+    public Player(){}
+
     public Player(string playerName, List<Dinossaur> dinos){
         name = playerName;
         Dinossaurs = dinos;
@@ -22,33 +24,18 @@ public class Player{
         Dinossaurs.Add(dino);
     }
 
+    public List<Dinossaur> GetDinossaurs(){
+        return Dinossaurs;
+    }
+
     public string GetName(){
         return name;
     }
 
-    public Dinossaur SelectDino(string acao){
-        ListDinos();
-        int dinoNumber = ScreenUtility.readInt("Selecione um dino para " + acao + ": ");
-        return Dinossaurs[dinoNumber-1];
+    public Dinossaur SelectDino(int id){
+        return Dinossaurs[id-1];
     }
 
-    public void ListDinos(){
-        int numeroDino = 0;
-        Console.WriteLine("{0,-5} {1,-25} {2,15} {3,15} {4,-8}", "Nr", "Dino", "Pontos Ataque", "Pontos Defesa", "Status");
-        Console.WriteLine(("").PadRight(80,'-'));
-        foreach (Dinossaur Dinossaur in Dinossaurs)
-        {
-            numeroDino++;
-            Console.WriteLine("{0,-5} {1,-25} {2,15} {3,15} {4,-8}", 
-                                numeroDino, 
-                                Dinossaur.GetName(), 
-                                Dinossaur.GetAttackPoints(),
-                                Dinossaur.GetDefensePoints(),
-                                (Dinossaur.IsAlive() ? "Vivo" : "Morto"));
-        }
-        Console.WriteLine(("").PadRight(80,'-'));
-        Console.WriteLine();
-    }
 
     public bool HasDinosAlive(){
         foreach (Dinossaur Dinossaur in Dinossaurs)
