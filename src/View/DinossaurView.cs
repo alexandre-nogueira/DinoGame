@@ -1,6 +1,7 @@
 using System;
 using DinoGame.Models;
 using System.Collections.Generic;
+using DinoGame.Util;
 
 namespace DinoGame.Views{
     public class DinossaurView : MainGameView{
@@ -11,8 +12,8 @@ namespace DinoGame.Views{
             for(int i=0; i < numberOfDinos; i++){
                 WriteMainMenu();
                 int dinoNumber = i +1;
-                Console.WriteLine("Player " + player.GetName() + " - Dino " + dinoNumber);
-                Console.WriteLine("-----------------------------");
+                ScreenUtility.WriteColoredString(player.GetName() + " - Dino " + dinoNumber, ConsoleColor.Black, ConsoleColor.Yellow);
+                ScreenUtility.WriteColoredString(("").PadRight(40, '='), ConsoleColor.Black, ConsoleColor.Yellow);
                 player.AddDinossaur(CreateDinossaur(maxPoints));
             }
         }
@@ -76,18 +77,25 @@ namespace DinoGame.Views{
             public void WritePointsLine(int pAttackPoints, int pDefensePoints){
                 int cursorTop = Console.CursorTop;
                 int cursorLeft = Console.CursorLeft;
+                var sb = new System.Text.StringBuilder();
                 Console.SetCursorPosition(0, Console.CursorTop+2);
                 Console.SetCursorPosition(0, Console.CursorTop);
                 for(int i = 0; i < pAttackPoints; i++){
-                    Console.Write('+');
+                    // Console.Write('+');
+                    sb.Append("+");
                 }
-                Console.Write(("").PadRight(pDefensePoints, '-'));
+                ScreenUtility.WriteColoredStringNoLine(sb.ToString(), ConsoleColor.Black, ConsoleColor.DarkGreen);
+                // Console.Write(sb.ToString());
+                ScreenUtility.WriteColoredStringNoLine(("").PadRight(pDefensePoints, '-'), ConsoleColor.Black, ConsoleColor.DarkCyan);
+                // Console.Write(("").PadRight(pDefensePoints, '-'));
                 Console.WriteLine();
                 Console.WriteLine();
                 ClearCurrentConsoleLine();
-                Console.WriteLine("Pontos de Ataque...: " + pAttackPoints);
+                ScreenUtility.WriteColoredString("Pontos de Ataque...: " + pAttackPoints, ConsoleColor.Black, ConsoleColor.DarkGreen);
+                // Console.WriteLine("Pontos de Ataque...: " + pAttackPoints);
                 ClearCurrentConsoleLine();
-                Console.WriteLine("Pontos de Defesa...: " + pDefensePoints);
+                ScreenUtility.WriteColoredString("Pontos de Defesa...: " + pDefensePoints, ConsoleColor.Black, ConsoleColor.DarkCyan);
+                // Console.WriteLine("Pontos de Defesa...: " + pDefensePoints);
 
                 Console.SetCursorPosition(cursorLeft, cursorTop);
 

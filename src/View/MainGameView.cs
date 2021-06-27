@@ -1,12 +1,13 @@
 using System;
+using DinoGame.Util;
 namespace DinoGame.Views{
     public class MainGameView{
 
         protected void WriteMainMenu(){
             Console.Clear();
-            Console.WriteLine(("").PadRight(80, '='));
-            Console.WriteLine("--------------------         BATALHA DE DINOSSAUROS         --------------------");
-            Console.WriteLine(("").PadRight(80, '='));
+            ScreenUtility.WriteColoredString(("").PadRight(80, '='), ConsoleColor.Black, ConsoleColor.DarkGreen);
+            ScreenUtility.WriteColoredString("--------------------         BATALHA DE DINOSSAUROS         --------------------", ConsoleColor.Black, ConsoleColor.DarkGreen);
+            ScreenUtility.WriteColoredString(("").PadRight(80, '='), ConsoleColor.Black, ConsoleColor.DarkGreen);
             Console.WriteLine();
         }
 

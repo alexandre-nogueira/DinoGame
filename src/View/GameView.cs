@@ -14,10 +14,7 @@ public class DinoGameView : MainGameView{
         public void InicialScreen(){
             WriteMainMenu();
             WriteDinoAscii();
-            Console.BackgroundColor =ConsoleColor.White;
-            Console.ForegroundColor =ConsoleColor.Black;
-            Console.Write("Vamos iniciar o jogo, pressione enter!");
-            Console.ResetColor();
+            ScreenUtility.WriteColoredString("Vamos iniciar o jogo, pressione enter!", ConsoleColor.Black, ConsoleColor.DarkYellow);
             Console.ReadKey();
         }
 
@@ -25,17 +22,17 @@ public class DinoGameView : MainGameView{
             for (int i=0; i<=25 ; i++)
             {
                 Console.SetCursorPosition(i+1, HEADERHEIGHT);
-                Console.WriteLine("                __ ");
+                ScreenUtility.WriteColoredString("                __ ", ConsoleColor.Black, ConsoleColor.DarkGreen);
                 Console.SetCursorPosition(i+1, HEADERHEIGHT+1);
-                Console.WriteLine("               / _)");
+                ScreenUtility.WriteColoredString("               / _)", ConsoleColor.Black, ConsoleColor.DarkGreen);
                 Console.SetCursorPosition(i+1, HEADERHEIGHT+2);
-                Console.WriteLine("      _.----._/ /  ");
+                ScreenUtility.WriteColoredString("      _.----._/ /  ", ConsoleColor.Black, ConsoleColor.DarkGreen);
                 Console.SetCursorPosition(i+1, HEADERHEIGHT+3);
-                Console.WriteLine("     /         /   ");
+                ScreenUtility.WriteColoredString("     /         /   ", ConsoleColor.Black, ConsoleColor.DarkGreen);
                 Console.SetCursorPosition(i+1, HEADERHEIGHT+4);
-                Console.WriteLine("  __/ (  | (  |    ");
+                ScreenUtility.WriteColoredString("  __/ (  | (  |    ", ConsoleColor.Black, ConsoleColor.DarkGreen);
                 Console.SetCursorPosition(i+1, HEADERHEIGHT+5);
-                Console.WriteLine(" /__.-'|_|--|_|    ");
+                ScreenUtility.WriteColoredString(" /__.-'|_|--|_|    ", ConsoleColor.Black, ConsoleColor.DarkGreen);
                 Console.WriteLine();
                 System.Threading.Thread.Sleep(80);
             }
@@ -61,11 +58,12 @@ public class DinoGameView : MainGameView{
             return ScreenUtility.ReadInt("Valor do dado...: ", maxDiceNumber);
         }
 
-        public void ShowAllsetScreen(Player player1, Player player2){
+        public void ShowAllsetScreen(){
             WriteMainMenu();
-            Console.WriteLine("-----------------------------");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("Tudo pronto, vamos comerçar!!");
-            Console.WriteLine("-----------------------------");
+            Console.ResetColor();
+
         }
 
         public void ShowFinshGameScreen(Player winner, List<Turn> turns){

@@ -13,12 +13,6 @@ public class MainProgram{
 
         gameController.InitGame();
 
-        //Create Dinos
-        gameController.CreateDinos(gameController.player1);
-        gameController.CreateDinos(gameController.player2);
-        
-        gameController.ShowAllsetScreen();
-
         while(true){
             gameController.InitTurn();
             gameController.ExecutePlay();

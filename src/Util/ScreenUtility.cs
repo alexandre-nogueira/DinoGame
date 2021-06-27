@@ -4,6 +4,21 @@ using System.Collections.Generic;
 namespace DinoGame.Util{
     public static class ScreenUtility{
 
+
+        public static void WriteColoredString(String text, ConsoleColor bg, ConsoleColor fg){
+            Console.ForegroundColor = fg;
+            Console.BackgroundColor = bg;
+            Console.WriteLine(text);
+            Console.ResetColor();
+        }
+
+        public static void WriteColoredStringNoLine(String text, ConsoleColor bg, ConsoleColor fg){
+            Console.ForegroundColor = fg;
+            Console.BackgroundColor = bg;
+            Console.Write(text);
+            Console.ResetColor();
+        }
+
         public static int readInt(string label){
             int valor = 0;
 

@@ -37,6 +37,9 @@ public class GameController
             InitDinosPerPlayer();
             InitDiceType();
             IntMaxPoints();
+            CreateDinos(player1);
+            CreateDinos(player2);
+            FinishInitProcess();
         }
 
         public void InitPlayers(){
@@ -56,9 +59,8 @@ public class GameController
             maxPoints = dinoGameView.GetMaxPoints(MAXPOSSIBLEPOINTS);
         }
 
-    //Refatorar
-        public void ShowAllsetScreen(){
-            dinoGameView.ShowAllsetScreen(player1, player2);
+        public void FinishInitProcess(){
+            dinoGameView.ShowAllsetScreen();
             playerController.ShowPlayer(player1);
             dinossaurController.ListDinosssaurs(player1.GetDinossaurs());
             playerController.ShowPlayer(player2);
