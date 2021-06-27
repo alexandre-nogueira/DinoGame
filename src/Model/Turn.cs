@@ -15,7 +15,7 @@ public class Turn{
     private int defenseDinoFinalPoints;
 
 
-    public int hitPointsAttack;
+    public int diceValue;
     public int hitPoints;
 
     public int GetNumber(){
