@@ -61,9 +61,9 @@ public class GameController
 
         public void FinishInitProcess(){
             dinoGameView.ShowAllsetScreen();
-            playerController.ShowPlayer(player1);
+            playerController.ShowPlayer(player1, true);
             dinossaurController.ListDinosssaurs(player1.GetDinossaurs());
-            playerController.ShowPlayer(player2);
+            playerController.ShowPlayer(player2, true);
             dinossaurController.ListDinosssaurs(player2.GetDinossaurs());
             Console.ReadKey();
         }

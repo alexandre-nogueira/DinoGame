@@ -11,13 +11,13 @@ namespace DinoGame.Views{
              Dinossaur defenseDino;
             WriteMainMenu();
             WriteTurn(turnNumber);
-            Console.WriteLine(attackPlayer.GetName() + ", sua vez!!");
+            ScreenUtility.WriteColoredString(attackPlayer.GetName() + ", sua vez!!", ConsoleColor.Black, ConsoleColor.DarkYellow);
             Console.WriteLine();
             dinossaurView.ListDinossaurs(attackPlayer.GetDinossaurs());
             attackDino = attackPlayer.SelectDino(ScreenUtility.readInt("Selecione um dino para atacar...: "));
             WriteMainMenu();
             WriteTurn(turnNumber);
-            Console.WriteLine(defensePlayer.GetName() + ", sua vez!!");
+            ScreenUtility.WriteColoredString(defensePlayer.GetName() + ", sua vez!!", ConsoleColor.Black, ConsoleColor.DarkYellow);
             Console.WriteLine();
             dinossaurView.ListDinossaurs(defensePlayer.GetDinossaurs());
             defenseDino = defensePlayer.SelectDino(ScreenUtility.readInt("Selecione um dino para defender...: "));
@@ -25,11 +25,9 @@ namespace DinoGame.Views{
         }
 
         public void WriteTurn(int numeroTurn){
-            Console.BackgroundColor =ConsoleColor.White;
-            Console.ForegroundColor =ConsoleColor.Black;
-            Console.WriteLine("Turn: " + numeroTurn + " ");
+            ScreenUtility.WriteColoredString("Turn: " + numeroTurn + " ", ConsoleColor.Black, ConsoleColor.DarkRed);
+            ScreenUtility.WriteColoredString(("").PadRight(40, '-'), ConsoleColor.Black, ConsoleColor.DarkRed);
             Console.WriteLine();
-            Console.ResetColor();
         }
 
         public void ShowTurnResult(Turn turn){

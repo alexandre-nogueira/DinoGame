@@ -1,5 +1,5 @@
 using System;
-
+using DinoGame.Util;
 using DinoGame.Models;
 
 namespace DinoGame.Views{
@@ -19,7 +19,13 @@ namespace DinoGame.Views{
         }
     //Display player data
         public void ShowPlayer(Player player){
-            Console.WriteLine("Jogador " + player.GetName());
+            ScreenUtility.WriteColoredString("Jogador " + player.GetName(), ConsoleColor.Black, ConsoleColor.DarkYellow);
+        }
+
+        
+        public void ShowPlayerSub(Player player){
+            ShowPlayer(player);
+            ScreenUtility.WriteColoredString(("").PadRight(40, '-'), ConsoleColor.Black, ConsoleColor.DarkYellow);
         }
 
     }

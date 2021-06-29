@@ -60,10 +60,8 @@ public class DinoGameView : MainGameView{
 
         public void ShowAllsetScreen(){
             WriteMainMenu();
-            Console.ForegroundColor = ConsoleColor.DarkBlue;
-            Console.WriteLine("Tudo pronto, vamos comerçar!!");
-            Console.ResetColor();
-
+            ScreenUtility.WriteColoredString("Tudo pronto, vamos comerçar!!", ConsoleColor.Black, ConsoleColor.DarkGreen);
+            Console.WriteLine();
         }
 
         public void ShowFinshGameScreen(Player winner, List<Turn> turns){

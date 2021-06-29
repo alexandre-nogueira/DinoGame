@@ -13,8 +13,12 @@ namespace DinoGame.Controllers{
             return new Player(playerView.GetPlayerName());
         }
 
-        public void ShowPlayer(Player player){
-            playerView.ShowPlayer(player);
+        public void ShowPlayer(Player player, bool title){
+           if (!title){
+                playerView.ShowPlayer(player);
+            }else{
+                playerView.ShowPlayerSub(player);
+            }
         }
     }
 }
