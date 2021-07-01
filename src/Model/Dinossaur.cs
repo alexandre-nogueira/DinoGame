@@ -3,26 +3,26 @@ using System;
 namespace DinoGame.Models{
 public class Dinossaur
 {
-    private string name;
+    public string Name { get; private set; }
 
-    private int attackPoints;
+    public int AttackPoints { get; private set; }
 
-    private int defensePoints;
+    public int DefensePoints { get; private set; }
 
-    private bool isAlive;
+    public bool IsDinoAlive { get; private set; }
 
     public Dinossaur(string n, int pa, int pd){
-        name = n;
-        attackPoints = pa;
-        defensePoints = pd;
-        isAlive = true;
+        Name = n;
+        AttackPoints = pa;
+        DefensePoints = pd;
+        IsDinoAlive = true;
 
     }
 
 
     public int Attack(){
         if (new Random().Next(1,100) <= 50){
-            attackPoints--;
+            AttackPoints--;
             return 1;
         }
         else{
@@ -32,29 +32,13 @@ public class Dinossaur
     }
 
     public void Defend(int hitPoints){
-        defensePoints = defensePoints - hitPoints;
-        if(defensePoints <= 0)
+        DefensePoints = DefensePoints - hitPoints;
+        if(DefensePoints <= 0)
             Die();
     }
 
-    public string GetName(){
-        return name;
-    }
-
-    public bool IsAlive(){
-        return isAlive;
-    }
-
-    public int GetDefensePoints(){
-        return defensePoints;
-    }
-
-    public int GetAttackPoints(){
-        return attackPoints;
-    }
-
     private void Die(){
-        isAlive = false;
+        IsDinoAlive = false;
     }
 
 }

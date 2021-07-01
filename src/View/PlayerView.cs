@@ -15,7 +15,7 @@ namespace DinoGame.Views{
 
     //Display player data
         public void ShowPlayer(Player player){
-            ScreenUtility.WriteColoredString("Jogador " + player.GetName(), ConsoleColor.Black, ConsoleColor.DarkYellow);
+            ScreenUtility.WriteColoredString("Jogador " + player.Name, ConsoleColor.Black, ConsoleColor.DarkYellow);
         }
 
         public void ShowPlayerSub(Player player){

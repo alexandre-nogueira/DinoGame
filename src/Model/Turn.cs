@@ -2,81 +2,36 @@
 namespace DinoGame.Models{
 public class Turn{
 
-    private int number;
-    private string attackPlayer;
-    private string defensePlayer;
+    public int Number {get; private set; }
+    public string AttackPlayer {get; private set; }
+    public string DefensePlayer {get; private set; }
 
-    public Dinossaur attackDino;
-    public Dinossaur defenseDino;
+    public Dinossaur AttackDino {get; private set; }
+    public Dinossaur DefenseDino {get; private set; }
 
-    private int attackDinoInicialPoints;
-    private int attackDinoFinalPoints;
-    private int defenseDinoInicialPoints;
-    private int defenseDinoFinalPoints;
+    public Dinossaur AttackDinoRef {get; private set; }
+    public Dinossaur DefenseDinoRef {get; private set; }
 
+    public int DiceValue {get; set;}
+    public int HitPoints {get; set;}
+    public int AttackPenaltyType {get; set;}
+    public int AtackPenaltyValue {get; set;}
 
-    public int diceValue;
-    public int hitPoints;
-    public int attackPenaltyType;
-    public int atackPenaltyValue;
-
-    public int GetNumber(){
-        return number;
-    }
-
-    public string GetAttackPlayer() {
-        return attackPlayer;
-    }
-
-    public string GetDefensePlayer(){
-        return defensePlayer;
-    }
-
-    public Dinossaur GetAttackDino(){
-        return attackDino;
-    }
-
-    public Dinossaur GetDefenseDino(){
-        return defenseDino;
-    }
-
-    public int GetattackDinoInicialPoints(){
-        return attackDinoInicialPoints;
-    }
-
-    public int GetAttackDinoFinalPoints(){
-        return attackDinoFinalPoints;
-    }
-
-    public int GetDefenseDinoInicialPoints(){
-        return defenseDinoInicialPoints;
-    }
-
-    public int GetDefenseDinoFinalPoints(){
-        return defenseDinoFinalPoints;
-    }
-    public Turn(int pNumber, string pAttackPlayer, string pDefensePlayer, Dinossaur pAttackDino, Dinossaur pDefenseDino){                     
-        number = pNumber;
-        attackPlayer = pAttackPlayer;
-        defensePlayer = pDefensePlayer;
-        attackDino = pAttackDino;
-        defenseDino = pDefenseDino;
-
-         attackDinoInicialPoints = pAttackDino.GetAttackPoints();
-         defenseDinoInicialPoints = pDefenseDino.GetDefensePoints();
-    }
-
-    public int GetAttackParameter(){
-        return attackDino.GetAttackPoints();
+    public Turn(int pNumber, string pAttackPlayer, string pDefensePlayer, Dinossaur attackDino, Dinossaur defenseDino){                     
+        Number = pNumber;
+        AttackPlayer = pAttackPlayer;
+        DefensePlayer = pDefensePlayer;
+        AttackDino = new Dinossaur (attackDino.Name, attackDino.AttackPoints, attackDino.DefensePoints);
+        DefenseDino = new Dinossaur(defenseDino.Name, defenseDino.AttackPoints, defenseDino.DefensePoints);
+        AttackDinoRef = attackDino;
+        DefenseDinoRef = defenseDino;
     }
 
     public void RegisterAttack(double pHitPoints, int penaltyType, int pentaltyValue){
 
-        attackDinoFinalPoints = attackDino.GetAttackPoints();
-        defenseDinoFinalPoints = defenseDino.GetDefensePoints();
-        hitPoints = (int)pHitPoints;
-        attackPenaltyType = penaltyType;
-        atackPenaltyValue = pentaltyValue;
+        HitPoints = (int)pHitPoints;
+        AttackPenaltyType = penaltyType;
+        AtackPenaltyValue = pentaltyValue;
     }
 
 

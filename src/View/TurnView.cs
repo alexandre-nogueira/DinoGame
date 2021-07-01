@@ -11,17 +11,17 @@ namespace DinoGame.Views{
              Dinossaur defenseDino;
             WriteMainMenu();
             WriteTurn(turnNumber);
-            ScreenUtility.WriteColoredString(attackPlayer.GetName() + ", sua vez!!", ConsoleColor.Black, ConsoleColor.DarkYellow);
+            ScreenUtility.WriteColoredString(attackPlayer.Name + ", sua vez!!", ConsoleColor.Black, ConsoleColor.DarkYellow);
             Console.WriteLine();
             dinossaurView.ListDinossaurs(attackPlayer.GetDinossaurs());
             attackDino = attackPlayer.SelectDino(ScreenUtility.readInt("Selecione um dino para atacar...: "));
             WriteMainMenu();
             WriteTurn(turnNumber);
-            ScreenUtility.WriteColoredString(defensePlayer.GetName() + ", sua vez!!", ConsoleColor.Black, ConsoleColor.DarkYellow);
+            ScreenUtility.WriteColoredString(defensePlayer.Name + ", sua vez!!", ConsoleColor.Black, ConsoleColor.DarkYellow);
             Console.WriteLine();
             dinossaurView.ListDinossaurs(defensePlayer.GetDinossaurs());
             defenseDino = defensePlayer.SelectDino(ScreenUtility.readInt("Selecione um dino para defender...: "));
-            return new Turn(turnNumber, attackPlayer.GetName(), defensePlayer.GetName(), attackDino, defenseDino);
+            return new Turn(turnNumber, attackPlayer.Name, defensePlayer.Name, attackDino, defenseDino);
         }
 
         public void WriteTurn(int numeroTurn){
@@ -31,11 +31,12 @@ namespace DinoGame.Views{
         }
 
         public void ShowTurnResult(Turn turn){
-            Console.WriteLine("O Player " + turn.GetAttackPlayer() + " atacou o dino " + turn.GetDefenseDino().GetName() + 
-                    " com o dino " + turn.GetAttackDino().GetName() + " e tirou " + turn.hitPoints + " pontos de vida");
-            Console.WriteLine("Agora o dino " + turn.GetDefenseDino().GetName() + " tem apenas " + turn.GetDefenseDino().GetDefensePoints());
+            System.Console.WriteLine();
+            Console.WriteLine("O Player " + turn.AttackPlayer + " atacou o dino " + turn.DefenseDino.Name + 
+                    " com o dino " + turn.AttackDino.Name + " e tirou " + turn.HitPoints + " pontos de vida");
+            Console.WriteLine("Agora o dino " + turn.DefenseDino.Name + " tem apenas " + (turn.DefenseDino.DefensePoints - turn.HitPoints));
 
-            Console.WriteLine("Penalidade de ataque: " + (turn.attackPenaltyType ==1 ? "ataque" : "defesa"));
+            Console.WriteLine("Penalidade de ataque: " + (turn.AttackPenaltyType ==1 ? "ataque" : "defesa"));
 
             Console.ReadKey();
 

@@ -12,7 +12,7 @@ namespace DinoGame.Views{
             for(int i=0; i < numberOfDinos; i++){
                 WriteMainMenu();
                 int dinoNumber = i +1;
-                ScreenUtility.WriteColoredString(player.GetName() + " - Dino " + dinoNumber, ConsoleColor.Black, ConsoleColor.Yellow);
+                ScreenUtility.WriteColoredString(player.Name + " - Dino " + dinoNumber, ConsoleColor.Black, ConsoleColor.Yellow);
                 ScreenUtility.WriteColoredString(("").PadRight(40, '='), ConsoleColor.Black, ConsoleColor.Yellow);
                 player.AddDinossaur(CreateDinossaur(maxPoints));
             }
@@ -112,10 +112,10 @@ namespace DinoGame.Views{
                 numeroDino++;
                 Console.WriteLine("{0,-5} {1,-25} {2,15} {3,15} {4,-8}", 
                                     numeroDino, 
-                                    dinossaur.GetName(), 
-                                    dinossaur.GetAttackPoints(),
-                                    dinossaur.GetDefensePoints(),
-                                    (dinossaur.IsAlive() ? "Vivo" : "Morto"));
+                                    dinossaur.Name, 
+                                    dinossaur.AttackPoints,
+                                    dinossaur.DefensePoints,
+                                    (dinossaur.IsDinoAlive ? "Vivo" : "Morto"));
             }
             Console.WriteLine(("").PadRight(80,'-'));
             Console.WriteLine();

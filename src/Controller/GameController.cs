@@ -87,14 +87,14 @@ public class GameController
             if(currentTurn == null){
                 attackPlayer = player1;
                 defensePlayer = player2;
-            }else if(currentTurn.GetAttackPlayer() == player1.GetName()){
+            }else if(currentTurn.AttackPlayer == player1.Name){
                 attackPlayer = player2;
                 defensePlayer = player1;
             }else{
                 attackPlayer = player1;
                 defensePlayer = player2;
             }
-            newTurnNumber = (currentTurn == null ? 1 : currentTurn.GetNumber()+1);
+            newTurnNumber = (currentTurn == null ? 1 : currentTurn.Number+1);
             currentTurn = turnController.StartNewTurn(newTurnNumber, attackPlayer,defensePlayer);
             
         }
@@ -105,15 +105,15 @@ public class GameController
             int penalidadeAtaque;
             
             //Attack player roll the dice
-            currentTurn.diceValue = RollDice();
+            currentTurn.DiceValue = RollDice();
   
             //Attack value is calculated
-            attackValue = (currentTurn.GetAttackDino().GetAttackPoints() / (diceType*1.00)) * currentTurn.diceValue;
+            attackValue = (currentTurn.AttackDino.AttackPoints / (diceType*1.00)) * currentTurn.DiceValue;
             //Console.WriteLine("value do dado:: " + diceValue + " Parametro ataque: " + currentTurn.GetAttackDino().GetAttackPoints() + " value ataque: " + attackValue);
 
             //O dano é inflingido no Dinossaur de defesa e ataque
-            currentTurn.GetDefenseDino().Defend((int)attackValue);
-            penalidadeAtaque = currentTurn.GetAttackDino().Attack();
+            currentTurn.DefenseDinoRef.Defend((int)attackValue);
+            penalidadeAtaque = currentTurn.AttackDinoRef.Attack();
 
             currentTurn.RegisterAttack(attackValue, penalidadeAtaque, 1);
 
