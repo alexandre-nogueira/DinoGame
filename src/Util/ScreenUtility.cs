@@ -19,6 +19,14 @@ namespace DinoGame.Util{
             Console.ResetColor();
         }
 
+        public static void WriteColoredAtPosition(String text, ConsoleColor bg, ConsoleColor fg, int column, int row){
+            Console.ForegroundColor = fg;
+            Console.BackgroundColor = bg;
+            Console.SetCursorPosition(column, row);
+            Console.Write(text);
+            Console.ResetColor();
+        }
+
         public static int readInt(string label){
             int valor = 0;
 

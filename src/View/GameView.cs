@@ -64,6 +64,8 @@ public class DinoGameView : MainGameView{
             Console.WriteLine();
         }
 
+
+        //Refatorar
         public void ShowFinshGameScreen(Player winner, List<Turn> turns){
             WriteMainMenu();
             Console.WriteLine("O winner é:....... " + winner.Name);
@@ -71,8 +73,9 @@ public class DinoGameView : MainGameView{
             {
                 turnView.WriteTurn(turn.Number);
                 ScreenUtility.WriteColoredString(turn.AttackPlayer, ConsoleColor.Black, ConsoleColor.DarkYellow);
-                Console.WriteLine("Dino Ataque >> " + turn.AttackDino.Name + 
-                turn.AttackDino.AttackPoints); 
+                Console.WriteLine("Dino Ataque >> " + turn.AttackDino.Name);
+                
+                //turn.AttackDino.AttackPoints); 
                 // " Pontos finais: " + turn.GetAttackDinoFinalPoints());
                 Console.WriteLine("Dino Defesa >> " + turn.DefenseDino.Name);
                 // " Pontos Iniciais: " + turn.GetDefenseDinoInicialPoints() + 
