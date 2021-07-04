@@ -46,7 +46,7 @@ namespace DinoGame.Views{
                                                     ConsoleColor.Black, ConsoleColor.DarkYellow, 
                                                     pCol, pRow);
             pRow++;
-            ScreenUtility.WriteColoredAtPosition(   "Dino >> " + turn.AttackDino.Name, 
+            ScreenUtility.WriteColoredAtPosition(   $"Dino >> {turn.AttackDino.Name}", 
                                                     ConsoleColor.Black, ConsoleColor.DarkMagenta, 
                                                     pCol, pRow);
             pRow++;
@@ -54,25 +54,25 @@ namespace DinoGame.Views{
                                                     ConsoleColor.Black, ConsoleColor.DarkGreen, 
                                                     pCol, pRow);
             if (turn.AttackPenaltyType == 1){
-                ScreenUtility.WriteColoredStringNoLine(" (-" + turn.AtackPenaltyValue + ")", 
+                ScreenUtility.WriteColoredStringNoLine($" (-{turn.AtackPenaltyValue})", 
                                                      ConsoleColor.Black, ConsoleColor.DarkRed);
             }
-            ScreenUtility.WriteColoredStringNoLine(" " + turn.AttackDinoRef.AttackPoints, 
+            ScreenUtility.WriteColoredStringNoLine($" {turn.AttackDinoRef.AttackPoints}", 
                                                     ConsoleColor.Black, ConsoleColor.DarkGreen);
             pRow++;
             ScreenUtility.WriteColoredAtPosition(   "Pontos Defesa:... ", 
                                                     ConsoleColor.Black, ConsoleColor.DarkBlue, 
                                                     pCol, pRow);
             if (turn.AttackPenaltyType != 1){
-                ScreenUtility.WriteColoredStringNoLine(" (-" + turn.AtackPenaltyValue + ")", 
+                ScreenUtility.WriteColoredStringNoLine($" (-{turn.AtackPenaltyValue})", 
                                                      ConsoleColor.Black, ConsoleColor.DarkRed);
             }
-            ScreenUtility.WriteColoredStringNoLine(" " + turn.AttackDinoRef.DefensePoints, 
+            ScreenUtility.WriteColoredStringNoLine($" {turn.AttackDinoRef.DefensePoints}", 
                                                     ConsoleColor.Black, ConsoleColor.DarkBlue);
             //HitPoints
             pRow = 7;
             pCol = 27;
-            ScreenUtility.WriteColoredAtPosition(   ">> Dano " + turn.HitPoints + " >>", 
+            ScreenUtility.WriteColoredAtPosition(   $">> Dano {turn.HitPoints} >>", 
                                                     ConsoleColor.DarkRed, ConsoleColor.White, 
                                                     pCol, pRow);
 
@@ -88,11 +88,11 @@ namespace DinoGame.Views{
                                                     ConsoleColor.Black, ConsoleColor.DarkYellow, 
                                                     pCol, pRow);
             pRow++;
-            ScreenUtility.WriteColoredAtPosition(   "Dino >> " + turn.DefenseDino.Name, 
+            ScreenUtility.WriteColoredAtPosition(   $"Dino >> {turn.DefenseDino.Name}", 
                                                     ConsoleColor.Black, ConsoleColor.DarkMagenta, 
                                                     pCol, pRow);
             pRow++;
-            ScreenUtility.WriteColoredAtPosition(   "Pontos ataque:... " + turn.DefenseDinoRef.AttackPoints, 
+            ScreenUtility.WriteColoredAtPosition(   $"Pontos ataque:... {turn.DefenseDinoRef.AttackPoints}", 
                                                     ConsoleColor.Black, ConsoleColor.DarkGreen, 
                                                     pCol, pRow);
             pRow++;
@@ -101,7 +101,7 @@ namespace DinoGame.Views{
                                                     pCol, pRow);
             // ScreenUtility.WriteColoredStringNoLine(" " + turn.DefenseDino.DefensePoints, 
             //                                         ConsoleColor.Black, ConsoleColor.Gray);
-            ScreenUtility.WriteColoredStringNoLine(" (-" + turn.HitPoints + ")", 
+            ScreenUtility.WriteColoredStringNoLine($" (-{turn.HitPoints})", 
                                                     ConsoleColor.Black, ConsoleColor.DarkRed);
             ScreenUtility.WriteColoredStringNoLine(" " + (turn.DefenseDinoRef.DefensePoints - turn.HitPoints), 
                                                     ConsoleColor.Black, ConsoleColor.DarkBlue);

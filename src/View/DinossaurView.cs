@@ -12,7 +12,7 @@ namespace DinoGame.Views{
             for(int i=0; i < numberOfDinos; i++){
                 WriteMainMenu();
                 int dinoNumber = i +1;
-                ScreenUtility.WriteColoredString(player.Name + " - Dino " + dinoNumber, ConsoleColor.Black, ConsoleColor.Yellow);
+                ScreenUtility.WriteColoredString($"{player.Name} - Dino " + dinoNumber, ConsoleColor.Black, ConsoleColor.Yellow);
                 ScreenUtility.WriteColoredString(("").PadRight(40, '='), ConsoleColor.Black, ConsoleColor.Yellow);
                 player.AddDinossaur(CreateDinossaur(maxPoints));
             }
@@ -91,10 +91,10 @@ namespace DinoGame.Views{
                 Console.WriteLine();
                 Console.WriteLine();
                 ClearCurrentConsoleLine();
-                ScreenUtility.WriteColoredString("Pontos de Ataque...: " + pAttackPoints, ConsoleColor.Black, ConsoleColor.DarkGreen);
+                ScreenUtility.WriteColoredString($"Pontos de Ataque...: {pAttackPoints}", ConsoleColor.Black, ConsoleColor.DarkGreen);
                 // Console.WriteLine("Pontos de Ataque...: " + pAttackPoints);
                 ClearCurrentConsoleLine();
-                ScreenUtility.WriteColoredString("Pontos de Defesa...: " + pDefensePoints, ConsoleColor.Black, ConsoleColor.DarkCyan);
+                ScreenUtility.WriteColoredString($"Pontos de Defesa...: {pDefensePoints}", ConsoleColor.Black, ConsoleColor.DarkCyan);
                 // Console.WriteLine("Pontos de Defesa...: " + pDefensePoints);
 
                 Console.SetCursorPosition(cursorLeft, cursorTop);
@@ -120,9 +120,5 @@ namespace DinoGame.Views{
             Console.WriteLine(("").PadRight(80,'-'));
             Console.WriteLine();
         }
-//Pick a dino and return to controller
-
-//Display Dinossaur data
-
     }
 }
