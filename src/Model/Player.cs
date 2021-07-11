@@ -29,7 +29,12 @@ namespace DinoGame.Models{
         }
 
         public Dinossaur SelectDino(int id){
-            return Dinossaurs[id-1];
+            try{
+                return Dinossaurs[id-1];
+            }
+            catch{
+                throw new ArgumentException("Dinossauro inexistente", nameof(id));
+            }
         }
 
 

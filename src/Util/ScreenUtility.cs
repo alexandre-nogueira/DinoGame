@@ -27,7 +27,7 @@ namespace DinoGame.Util{
             Console.ResetColor();
         }
 
-        public static int readInt(string label){
+        public static int ReadInt(string label){
             int valor = 0;
 
                 while(true){
@@ -39,7 +39,7 @@ namespace DinoGame.Util{
             return valor;
         }
 
-        public static double readDouble(string label){
+        public static double ReadDouble(string label){
             double valor = 0;
 
                 while(true){

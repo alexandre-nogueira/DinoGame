@@ -14,13 +14,25 @@ namespace DinoGame.Views{
             ScreenUtility.WriteColoredString(attackPlayer.Name + ", sua vez!!", ConsoleColor.Black, ConsoleColor.DarkYellow);
             Console.WriteLine();
             dinossaurView.ListDinossaurs(attackPlayer.GetDinossaurs());
-            attackDino = attackPlayer.SelectDino(ScreenUtility.readInt("Selecione um dino para atacar...: "));
+            while(true){
+                try{
+                    int dinoId = ScreenUtility.ReadInt("Selecione um dino para atacar...: ", attackPlayer.GetDinossaurs().Count);
+                    attackDino = attackPlayer.SelectDino(dinoId);
+                    //attackDino = attackPlayer.SelectDino(ScreenUtility.readInt("Selecione um dino para atacar...: "));
+                    break;
+                }
+                catch(Exception e)
+                {
+                    ScreenUtility.WriteColoredString(e.Message, ConsoleColor.DarkRed, ConsoleColor.Black);
+                }
+            }
+            
             WriteMainMenu();
             WriteTurn(turnNumber);
             ScreenUtility.WriteColoredString(defensePlayer.Name + ", sua vez!!", ConsoleColor.Black, ConsoleColor.DarkYellow);
             Console.WriteLine();
             dinossaurView.ListDinossaurs(defensePlayer.GetDinossaurs());
-            defenseDino = defensePlayer.SelectDino(ScreenUtility.readInt("Selecione um dino para defender...: "));
+            defenseDino = defensePlayer.SelectDino(ScreenUtility.ReadInt("Selecione um dino para Defender...: ", attackPlayer.GetDinossaurs().Count));
             return new Turn(turnNumber, attackPlayer.Name, defensePlayer.Name, attackDino, defenseDino);
         }
 
@@ -71,7 +83,7 @@ namespace DinoGame.Views{
                                                     ConsoleColor.Black, ConsoleColor.DarkBlue);
             //HitPoints
             pRow = 7;
-            pCol = 27;
+            pCol = 31;
             ScreenUtility.WriteColoredAtPosition(   $">> Dano {turn.HitPoints} >>", 
                                                     ConsoleColor.DarkRed, ConsoleColor.White, 
                                                     pCol, pRow);
@@ -99,11 +111,9 @@ namespace DinoGame.Views{
             ScreenUtility.WriteColoredAtPosition(   "Pontos Defesa:... ", 
                                                     ConsoleColor.Black, ConsoleColor.DarkBlue, 
                                                     pCol, pRow);
-            // ScreenUtility.WriteColoredStringNoLine(" " + turn.DefenseDino.DefensePoints, 
-            //                                         ConsoleColor.Black, ConsoleColor.Gray);
             ScreenUtility.WriteColoredStringNoLine($" (-{turn.HitPoints})", 
                                                     ConsoleColor.Black, ConsoleColor.DarkRed);
-            ScreenUtility.WriteColoredStringNoLine(" " + (turn.DefenseDinoRef.DefensePoints - turn.HitPoints), 
+            ScreenUtility.WriteColoredStringNoLine(" " + (turn.DefenseDinoRef.DefensePoints), 
                                                     ConsoleColor.Black, ConsoleColor.DarkBlue);
 
             Console.ReadKey();
